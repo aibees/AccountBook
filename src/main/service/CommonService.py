@@ -9,3 +9,16 @@ def getComboData(category):
     }
     conn = Connection()
     return conn.select(SelectComboBySysdiv, params)
+
+
+def getComboData_select(category):
+    result = getComboData(category)
+    result.insert(0,
+        {
+            'sysdiv': 'COMBO',
+            'category': category,
+            'code': '-1',
+            'name': '전체'
+        }
+    )
+    return result

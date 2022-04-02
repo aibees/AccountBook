@@ -24,13 +24,13 @@ def excelDataParse(fileName):
     for r in range(2, workBook.max_row + 1):
         c_r = str(r)
         row = []
-        for c in range(workBook.max_column):
-            cell = workBook[chr(ord('A') + c) + c_r].value
-            if isinstance(cell, datetime):
-                row.append(cell.strftime("%Y%m%d"))
-            else:
-                row.append(workBook[chr(ord('A') + c) + c_r].value)
-        # recordtime 시간은 엑셀 넣은 시간으로, 날짜는 엑셀 안에 기록된 날짜로
-        row.append(workBook[chr(ord('A')) + c_r].value.strftime("%Y-%m-%d") + 'T' + datetime.now().strftime("%H:%M:%S"))
+        for c in range(workBook.max_column - 1):
+            row.append(workBook[chr(ord('A') + c) + c_r].value)
+
+        #record time
+        date = workBook['A' + c_r].value
+        recode = workBook['L' + c_r].value
+        record_time = date[:4] + '-' + date[4:6] + '-' + date[-2:] + 'T' + recode[:2] + ':' + recode[2:4] + ':' + recode[-2:]
+        row.append(record_time)
         result.append(row)
     return result

@@ -5,7 +5,7 @@ from PyQt5.QtWidgets import QDialog, QLineEdit, QTimeEdit, QDateEdit, QLabel, QC
     QTableWidgetItem, QHeaderView, QMessageBox, QFileDialog
 
 from service.CommonService import getComboData
-from service.SlipService import *
+from service.SlipSaveService import *
 
 FIXED_WIDTH = 85
 FIXED_HEIGHT = 25

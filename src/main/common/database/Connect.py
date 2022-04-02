@@ -12,7 +12,7 @@ class Connection:
         self.conn = pymysql.connect(
             host=self.conf.getConfig("DATABASE", "DB_HOST")
             , user=self.conf.getConfig("DATABASE", "DB_USER")
-            , port=3306
+            , port=3333
             , passwd=self.conf.getConfig("DATABASE", "DB_PSWD")
             , db=self.conf.getConfig("DATABASE", "DB_SCHM")
             , charset='utf8'
